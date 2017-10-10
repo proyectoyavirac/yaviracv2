@@ -1,0 +1,78 @@
+<html lang="en" ng-app="myApp">
+    
+    <head>
+        <title>Ingreso</title>
+        <meta name="viewport" content="width=device-width, initial-escale=1.0">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+    
+        <meta charset="utf-8">
+    
+        <link rel="stylesheet" href="login.css">
+    
+    </head>
+    
+    <body>
+    
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    
+    
+    
+        
+        <center>
+            <p></p>
+            <p></p>
+            <p></p>
+            <img src="../img/LOGO PRINCIPAL.png" height=120 width=500/>
+        </center>
+    
+        <div class="jumbotron boxlogin">
+            <center>
+                <div class="alert alert-success" role="alert">
+                    <strong>Regístrate con tu dirección de email</strong>
+                </div>
+            </center>
+    
+    
+    
+    
+            <form ng-submit="addpersonas()">
+    
+    
+                <div class="form-group">
+                    <span id="reauth-email" class="reauth-email"></span>
+                    <input type="email" id="inputEmail" class="form-control" placeholder="Email" ng-model="persona.inputEmail" required autofocus>
+                </div>
+    
+                <div class="form-group">
+                    <input type="password" id="input" class="form-control" placeholder="Password" required autofocus>
+                </div>
+    
+                <div class="form-group">
+                    <input type="password" id="inputPassword" class="form-control" placeholder="Confirmar Password" ng-model="persona.inputPassword"
+                        required>
+                </div>
+    
+                <div class="form-group">
+                    <input type="text" id="inputName" class="form-control" placeholder="Usuario" ng-model="persona.inputName" required>
+                </div>
+    
+                <div class="alert alert-warning" role="alert">
+                    Al hacer click en Registrarse, aceptas los términos y condiciones.
+                </div>
+    
+                <center>
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick="location='index.html'">Registrarse</button>
+                </center>
+    
+                <a href="index.html" class="forgot-password" style="color:green">
+                            Iniciar sesión
+                         </a>
+    
+    
+            </form>
+    
+    
+        </div>
+    </body>
+    </htm>
