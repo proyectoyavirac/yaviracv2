@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/TEST2017?authSource=admin');
+mongoose.connect('mongodb://localhost:27017/personas');
 require('./models/schema');
 
 var index = require('./routes/index');

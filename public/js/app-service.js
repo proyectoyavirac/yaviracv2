@@ -1,12 +1,4 @@
 var app = angular.module('app-developers', ['ngRoute']);
-var express = require('express');
-var bodyParser = require('body-parser');
-var app = express();
-var mongoose = require('mongoose');
-mongoose.createConnection('mongodb://maflores4:maflores4@10.1.0.93:27017/testmaflores4?authSource=admin', {
-    useMongoClient: true,
-});
-
 
 app.config(function ($routeProvider) {
     $routeProvider
@@ -26,7 +18,7 @@ app.config(function ($routeProvider) {
             templateUrl: 'views/login.html',
             controller: 'ctrlLogin'
         })
-        .when('/register', {
+        .when('/register/create', {
             templateUrl: 'views/register.html',
             controller: 'ctrlRegister'
         });
@@ -52,69 +44,50 @@ app.controller('ctrlHome', function ($scope) {
 });
 
 app.controller('ctrlDocumentation', function ($scope) {
-    
-    $scope.getUsuario = function(){
-		$http.get('/api/usuario/').then(function(response){
-			$scope.usuario = response.data;
-		});
-	};
-    
-    $scope.addUsuario = function(){
-		//var id = $routeParams.id;
-		$http.post('/api/usuario/', $scope.usuario).then(function(response){
-			//$scope.usuario = response.data;
-			window.location.href = '/';
-		});
-	};
+    $scope.firstName = "John";
+    $scope.lastName = "Doe";
 });
 
 app.controller('ctrlContact', function ($scope) {
-     
-    $scope.getUsuario = function(){
-		$http.get('/api/usuario/').then(function(response){
-			$scope.usuario = response.data;
-		});
-	};
-    
-    $scope.addUsuario = function(){
-		//var id = $routeParams.id;
-		$http.post('/api/usuario/', $scope.usuario).then(function(response){
-			//$scope.usuario = response.data;
-			window.location.href = '/';
-		});
-	};
+    $scope.firstName = "John";
+    $scope.lastName = "Doe";
 });
 
 app.controller('ctrlLogin', function ($scope) {
-   
-    $scope.getUsuario = function(){
-		$http.get('/api/usuario/').then(function(response){
-			$scope.usuario = response.data;
-		});
-	};
-    
-    $scope.addUsuario = function(){
-		//var id = $routeParams.id;
-		$http.post('/api/usuario/', $scope.usuario).then(function(response){
-			//$scope.usuario = response.data;
-			window.location.href = '/';
-		});
-	};
+    $scope.firstName = "John";
+    $scope.lastName = "Doe";
 });
 
 app.controller('ctrlRegister', function ($scope) {
-   
-    $scope.getUsuario = function(){
-		$http.get('/api/usuario/').then(function(response){
-			$scope.usuario = response.data;
-		});
-	};
     
-    $scope.addUsuario = function(){
-		//var id = $routeParams.id;
-		$http.post('/api/usuario/', $scope.usuario).then(function(response){
-			//$scope.usuario = response.data;
-			window.location.href = '/';
-		});
-	};
+    $scope.getpersonas = function () {
+        $http.get('#!register').then(function (response) {
+            $scope.personas = response.data;
+        });
+    };
+    
+    $scope.showpersonas = function () {
+        var id = $routeParams.id;
+        $http.get('#!register' + id).then(function (response) {
+            $scope.persona = response.data;
+        });
+    };
+    
+    $scope.addpersonas = function () {
+      var id = $routeParams.id;
+        $http.post('#!register', $scope.persona).then(function (response) {
+        //   $scope.persona = response.data;
+            window.location.href = '/';
+        });
+    };
+    
+    
+    $scope.updatepersonas = function () {
+        var id = $routeParams.id;
+        $http.put('#!register' + id, $scope.persona).then(function (response) {
+           //$scope.persona = response.data;
+            window.location.href = '/';
+        });
+    };
+   
 });
