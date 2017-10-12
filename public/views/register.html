@@ -1,51 +1,52 @@
 <body>
 
-   
-    <div class="jumbotron boxlogin">
-        <center>
-            <div class="alert alert-success" role="alert">
-                <strong>Regístrate con tu dirección de email</strong>
-            </div>
-        </center>
+
+<div class="jumbotron boxlogin">
+    <center>
+        <div class="alert alert-success" role="alert">
+            <strong>Regístrate con tu dirección de email</strong>
+        </div>
+    </center>
 
 
 
-        <form ng-submit="addpersonas()">
+    <form ng-submit="addpersonas()">
 
 
-            <div class="form-group">
-                <span id="reauth-email" class="reauth-email"></span>
-                <input type="email" id="inputEmail" class="form-control" placeholder="Email" ng-model="persona.inputEmail" required autofocus>
-            </div>
-
-            <div class="form-group">
-                <input type="password" id="input" class="form-control" placeholder="Password" required autofocus>
-            </div>
-
-            <div class="form-group">
-                <input type="password" id="inputPassword" class="form-control" placeholder="Confirmar Password" ng-model="persona.inputPassword"
-                    required>
-            </div>
-
+        <div class="form-group">
             <div class="form-group">
                 <input type="text" id="inputName" class="form-control" placeholder="Usuario" ng-model="persona.inputName" required>
             </div>
-            <div class="alert alert-warning" role="alert">
-                <input type="checkbox" ng-model="personalDetail.selected" />
-                Al hacer click en Registrarse, aceptas los términos y condiciones.
-            </div>
+            <span id="reauth-email" class="reauth-email"></span>
+            <input type="email" id="inputEmail" class="form-control" placeholder="Email" ng-model="persona.inputEmail" required autofocus>
+        </div>
 
-            <center>
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick="location='#!'">Registrarse</button>
-            </center>
+        <div class="form-group">
+            <input type="password" id="input" class="form-control" placeholder="Password" required autofocus>
+        </div>
 
-            <a href="#!login" class="forgot-password" style="color:green">
-                Iniciar sesión
-            </a>
-
-
-        </form>
+        <div class="form-group">
+            <input type="password" id="inputPassword" class="form-control" placeholder="Confirmar Password" ng-model="persona.inputPassword"
+                   required>
+        </div>
 
 
-    </div>
+        <div class="alert alert-warning" role="alert">
+            <input type="checkbox" ng-model="personalDetail.selected" />
+            Al hacer click en Registrarse, aceptas los términos y condiciones.
+        </div>
+
+        <center>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick="location='#!'">Registrarse</button>
+        </center>
+
+        <a href="#!login" class="forgot-password" style="color:green">
+            Iniciar sesión
+        </a>
+
+
+    </form>
+
+
+</div>
 </body>
