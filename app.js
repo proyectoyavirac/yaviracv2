@@ -10,8 +10,11 @@ var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/personas');
 require('./models/schema');
 
+
+
 var index = require('./routes/index');
 var users = require('./routes/users');
+var todo = require('./routes/models/todo');
 
 var app = express();
 

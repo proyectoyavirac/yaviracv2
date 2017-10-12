@@ -18,7 +18,7 @@ app.config(function ($routeProvider) {
             templateUrl: 'views/login.html',
             controller: 'ctrlLogin'
         })
-        .when('/register/create', {
+        .when('/register', {
             templateUrl: 'views/register.html',
             controller: 'ctrlRegister'
         });
@@ -58,36 +58,35 @@ app.controller('ctrlLogin', function ($scope) {
     $scope.lastName = "Doe";
 });
 
-app.controller('ctrlRegister', function ($scope) {
-    
+app.controller('ctrlRegister', function ($scope, $route, $routeParams, $http) {
+
     $scope.getpersonas = function () {
-        $http.get('#!register').then(function (response) {
+        $http.get('/register').then(function (response) {
             $scope.personas = response.data;
         });
     };
-    
+
     $scope.showpersonas = function () {
         var id = $routeParams.id;
-        $http.get('#!register' + id).then(function (response) {
+        $http.get('/register' + id).then(function (response) {
             $scope.persona = response.data;
         });
     };
-    
+
     $scope.addpersonas = function () {
-      var id = $routeParams.id;
-        $http.post('#!register', $scope.persona).then(function (response) {
-        //   $scope.persona = response.data;
+        var id = $routeParams.id;
+       $http.post('/register', $scope.persona).then(function (response) {
+            //   $scope.persona = response.data;
             window.location.href = '/';
         });
     };
-    
-    
+
     $scope.updatepersonas = function () {
         var id = $routeParams.id;
-        $http.put('#!register' + id, $scope.persona).then(function (response) {
-           //$scope.persona = response.data;
+       $http.put('/register' + id, $scope.persona).then(function (response) {
+            //$scope.persona = response.data;
             window.location.href = '/';
         });
     };
-   
+
 });
