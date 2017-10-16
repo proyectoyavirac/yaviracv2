@@ -1,9 +1,11 @@
 var mongoose = require('mongoose');
 
-module.exports = mongoose.model('Persona', {
-   
+var schema = mongoose.Schema;
+
+var personaSchema = schema({
     inputName: String,
     inputPassword: String,
     inputEmail: String
-
 });
+
+module.exports = mongoose.model('Persona', personaSchema);

@@ -66,24 +66,17 @@ app.controller('ctrlRegister', function ($scope, $route, $routeParams, $http) {
         });
     };
 
-    $scope.showpersonas = function () {
-        var id = $routeParams.id;
-        $http.get('/register' + id).then(function (response) {
-            $scope.persona = response.data;
-        });
-    };
-
     $scope.addpersonas = function () {
         var id = $routeParams.id;
-       $http.post('/register', $scope.persona).then(function (response) {
-            //   $scope.persona = response.data;
+       $http.post('/users/register', $scope.persona).then(function (response) {
+          $scope.persona = response.data;
             window.location.href = '/';
         });
     };
 
     $scope.updatepersonas = function () {
         var id = $routeParams.id;
-       $http.put('/register' + id, $scope.persona).then(function (response) {
+       $http.put('/users/register' + id, $scope.persona).then(function (response) {
             //$scope.persona = response.data;
             window.location.href = '/';
         });

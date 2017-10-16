@@ -4,11 +4,13 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/personas');
-require('./models/schema');
+mongoose.Promise = global.Promise;
+mongoose.connect('mongodb://localhost:27017/personas', {useMongoClient: true}).then(
+  () => { console.log('conexion exitosa') },
+  err => { console.log('no de ha conectado mongoDB') }
+);
 
 
 
