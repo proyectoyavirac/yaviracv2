@@ -1,46 +1,40 @@
-<body>
+<div class="jumbotron boxlogin">
+    <center>
+        <div class="alert alert-success" role="alert">
+            <strong>Regístrate con tu dirección de email</strong>
+        </div>
+    </center>
+    <div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
+    <form class="form" ng-submit="register()">
 
+        <div class="form-group">
+            <input type="text" name="nameuser" class="form-control" placeholder="Usuario" ng-model="registerForm.nameuser" required>
+        </div>
 
-    <div class="jumbotron boxlogin">
+        <div class="form-group">
+            <span id="reauth-email" class="reauth-email"></span>
+            <input type="email" name="username" class="form-control" placeholder="Email" ng-model="registerForm.username" required autofocus>
+        </div>
+
+        <div class="form-group">
+            <input type="password" name="password" class="form-control" placeholder="Password" required autofocus>
+        </div>        
+        <div class="form-group">
+            <input type="password" name="password" class="form-control" placeholder="Confirmar Password" ng-model="registerForm.password"
+                required>
+        </div>
+
+        <div class="alert alert-warning" role="alert">
+            <input type="checkbox" ng-model="personalDetail.selected" required/>&nbsp;&nbsp;Aceptas los términos y condiciones.&nbsp;
+        </div>
+
         <center>
-            <div class="alert alert-success" role="alert">
-                <strong>Regístrate con tu dirección de email</strong>
-            </div>
+            <button type="submit" class="btn btn-outline-success my-2 my-sm-0" ng-disabled="disabled">Registrar</button>
         </center>
-        <div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
-        <form class="form" ng-submit="register()">
+    </form>
 
-            <div class="form-group">
-                <input type="text" name="username" class="form-control" placeholder="Usuario" ng-model="registerU.username"  required>
-            </div>
+    <a href="#!login" class="forgot-password" style="color:green">
+        Iniciar sesión
+    </a>
 
-            <div class="form-group">
-                <span id="reauth-email" class="reauth-email"></span>
-                <input type="email" name="inputEmail" class="form-control" placeholder="Email" ng-model="registerU.email" required autofocus>
-            </div>
-
-            <div class="form-group">
-                <input type="password" name="password" class="form-control" placeholder="Password" required autofocus>
-            </div>
-
-            <div class="form-group">
-                <input type="password" name="password" class="form-control" placeholder="Confirmar Password" ng-model="registerU.password"
-                    required>
-            </div>
-
-            <div class="alert alert-warning" role="alert">
-                <input type="checkbox" ng-model="personalDetail.selected" required/>&nbsp;&nbsp;Aceptas los términos y condiciones.&nbsp;
-            </div>
-
-            <center>
-                <button type="submit" class="btn btn-outline-success my-2 my-sm-0" ng-disabled="disabled">Registrar</button>
-                <!--<button class="btn btn-outline-success my-2 my-sm-0" ng-click="register()">Registrarse</button>-->
-            </center>
-        </form>
-
-        <a href="#!login" class="forgot-password" style="color:green">
-            Iniciar sesión
-        </a>
-
-    </div>
-</body>
+</div>
