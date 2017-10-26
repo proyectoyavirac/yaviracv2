@@ -63,14 +63,20 @@ myApp.factory('AuthService', ['$q', '$timeout', '$http', function ($q, $timeout,
         return user;
     }
 
-    authservice.login = function (username, password) {
+    authservice.login = function (name, id, password) {
         console.log('authservice.login');
 
         // create a new instance of deferred
         var deferred = $q.defer();
+        var local = {
+            name: name,
+            id: id,
+            password: password
+        }
+
 
         // send a post request to the server
-        $http.post('/user/login', { username: username, password: password })
+        $http.post('http://localhost:3333/api/user', local)
             // handle success // test for success
             .then(function success(data, status) { // note to mherman: angular docs say .success method has been deprecated and to use .then https://docs.angularjs.org/api/ng/service/$http
                 console.log('data', data);
@@ -116,20 +122,26 @@ myApp.factory('AuthService', ['$q', '$timeout', '$http', function ($q, $timeout,
 
     };
 
-    authservice.register = function (username, password, nameuser) {
+    authservice.register = function (name, id, password) {
 
         // create a new instance of deferred
         var deferred = $q.defer();
 
         console.log('hello from authservice.register');
+        var local = {
+            name: name,
+            id: id,
+            password: password
+        }
+        console.log(local);
         // send a post request to the server
-        $http.post('/user/register', { username: username, password: password, nameuser: nameuser })
-            // handle success
+        $http.post('http://localhost:3333/api/user', { local })    // handle success
             .then(function success(data, status) {
                 console.log('hello!');
                 console.log('data', data);
                 if (status === 200 && data.status) {
                     deferred.resolve();
+                    window.location.href = '/login';
                 } else {
                     deferred.reject();
                 }
@@ -229,20 +241,19 @@ myApp.controller('ctrlRegister',
                 $scope.disabled = true;
 
                 // call register from service
-                authservice.register($scope.registerForm.username, $scope.registerForm.password, $scope.registerForm.nameuser)
-                    // handle success
+                
+                authservice.register($scope.local.name, $scope.local.id, $scope.local.password)
+                    
+                // handle success
+
                     .then(function () {
-                        $location.path('/#!/login');
+                        $location.path('/login');
                         $scope.disabled = false;
-                        $scope.registerForm = {};
+                        $scope.local = {};
                     })
-                    // handle error
-                    .catch(function () {
-                        $scope.error = true;
-                        $scope.errorMessage = "Algo salió mal!";
-                        $scope.disabled = false;
-                        $scope.registerForm = {};
-                    });
+
+                    $location.path('/login');
+                // h
 
             };
 
