@@ -1,0 +1,87 @@
+<html>
+<FONT FACE="Courier" SIZE=5 COLOR="black">
+    PROGRAMACION EN C#
+</FONT>
+<br>
+<br>
+<br>
+<center>
+    <img src="https://1.bp.blogspot.com/-gwHkzj-47wA/WBBlZVYIIvI/AAAAAAAAN6g/DVlI0B-TpP81Phrvk4E3Ud2YcgSeEU7BwCPcB/s1600/2p4i.png" align="left" width="300" height="300">
+    <div class="description text-justify">
+        <h4><b>PETICIONES AL API-REST - PROYECTO ESPE</b></h4>
+</center>
+<p>
+
+    Utilizando el metodo Web-response<br> lo implementamos con el lenguaje de programacion C sharp<br> agregandole una interfaz grafica, para mostrar los datos<br> de una manera mas ordenada <br> ralizamos la peticion al api-rest ESPE<br> una vez modificado
+    el metodo obtendremos los datos de la siguiente manera..<br>
+</p>
+</div>
+<br>
+<br>
+<br>
+<br>
+<h4><b>METODO WEB-RESPONSE</b></h4>
+<br>
+<br>
+<pre>
+        <span style="color:Green;">// Create a 'WebRequest' object with the specified url. </span>
+  WebRequest myWebRequest = WebRequest.Create(<span style="color:#A31515;">"http://www.contoso.com"</span>); 
+ 
+ <span style="color:Green;">// Send the 'WebRequest' and wait for response.</span>
+ WebResponse myWebResponse = myWebRequest.GetResponse(); 
+ 
+ <span style="color:Green;">// Obtain a 'Stream' object associated with the response object.</span>
+ Stream ReceiveStream = myWebResponse.GetResponseStream();
+ 
+ Encoding encode = System.Text.Encoding.GetEncoding(<span style="color:#A31515;">"utf-8"</span>);
+ 
+        <span style="color:Green;">// Pipe the stream to a higher level stream reader with the required encoding format. </span>
+  StreamReader readStream = <span style="color:Blue;">new</span> StreamReader( ReceiveStream, encode );
+  Console.WriteLine(<span style="color:#A31515;">"\nResponse stream received"</span>);
+  Char[] read = <span style="color:Blue;">new</span> Char[256];
+ 
+        <span style="color:Green;">// Read 256 charcters at a time.    </span>
+  <span style="color:Blue;">int</span> count = readStream.Read( read, 0, 256 );
+        Console.WriteLine(<span style="color:#A31515;">"HTML...\r\n"</span>);
+ 
+ <span style="color:Blue;">while</span> (count &gt; 0) 
+ {
+            <span style="color:Green;">// Dump the 256 characters on a string and display the string onto the console.</span>
+     String str = <span style="color:Blue;">new</span> String(read, 0, count);
+     Console.Write(str);
+     count = readStream.Read(read, 0, 256);
+ }
+ 
+       Console.WriteLine(<span style="color:#A31515;">""</span>);
+     <span style="color:Green;">// Release the resources of stream object.</span>
+     readStream.Close();
+ 
+     <span style="color:Green;">// Release the resources of response object.</span>
+     myWebResponse.Close();
+     <center>
+     <br>
+     <img src=" https://scontent-mia3-1.xx.fbcdn.net/v/t1.0-9/22852049_303928283425387_2278107324401151878_n.jpg?oh=a193e7669b4b676cf9f4b9150003244d&oe=5AADC4A3" align="left" width="600" height="350">
+     <br></center> 
+ 
+ </pre>
+<br>
+<br>
+<br>
+<br>
+<center>
+    <h5>Descargar ejemplo en c sharp</h5>
+    <FONT FACE="Courier" SIZE=4 COLOR="black">
+        <h2>CLAVE DE DESCARGA:</h5>
+    </FONT>
+    <FONT FACE="Courier" SIZE=4 COLOR="red">
+        <h5>!RuC1-UVJDfOKJ1mnzAh9JK6lbARhbsSsXstP8erv7PY</h3>
+    </FONT>
+</center>
+
+
+<br>
+<center><button type="button" class="" type="Submit" onclick="location='https://mega.nz/#!IX5zjCiR'">DESCARGAR
+        <i class="" aria-hidden="true"></i>
+      </button></center>
+
+</html>
