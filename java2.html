@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JAVA</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">    <link rel="stylesheet" href="bootstrap.min.css" >
+    <link rel="stylesheet" href="css/am.css">
+</head>
+<body>
+<script src="js/index.js"></script>
+<nav class="navbar navbar-default navbar-fixed-top" role="banner">
+    <div class="container">
+        <div class="navbar-header">
+
+<div id="masthead">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <img  src= "Java-logo.jpg" />
+
+
+            </div>
+            <div class="col-md-5">
+                <div class="well well-lg">
+                    <div class="row">
+
+                        <div class="col-sm-6">
+                            <h1>JAVA</h1> <br>
+                            <p >El siguiente codigo le permitira hacer HTTP GET REQUEST de lo que usted desee.</p>
+                            <p>Las librerias utilizadas fueron las siguientes:</p>
+                            <br><b>Net.HttpURLConnection</b>
+                            <br> <b>Net.URL</b>
+                            <b>Javax.net.ssl.HttpsURLConnection</b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!--/container-->
+</div><!--/masthead-->
+
+<!--main-->
+<div class="container">
+    <div class="row">
+        <!--left-->
+
+
+        <!--right-->
+        <div class="col-md-9">
+            <tr>
+                <td align="center" valign="top" id="templateBody">
+                    <!--[if (gte mso 9)|(IE)]>
+                    <table align="center" border="0" cellspacing="0" cellpadding="0" width="600" style="width:600px;">
+                        <tr>
+                            <td align="center" valign="top" width="600" style="width:600px;">
+                    <![endif]-->
+                    <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" class="templateContainer">
+                        <tr>
+                            <td valign="top" class="bodyContainer"><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnBoxedTextBlock" style="min-width:100%;">
+                                <!--[if gte mso 9]>
+                                <table align="center" border="0" cellspacing="0" cellpadding="0" width="100%">
+                                <![endif]-->
+                                <tbody class="mcnBoxedTextBlockOuter">
+                                <tr>
+                                    <td valign="top" class="mcnBoxedTextBlockInner">
+
+                                        <!--[if gte mso 9]>
+                                        <td align="center" valign="top" ">
+                                        <![endif]-->
+                                        <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" style="min-width:100%;" class="mcnBoxedTextContentContainer">
+                                            <tbody><tr>
+
+                                                <td style="padding-top:9px; padding-left:18px; padding-bottom:9px; padding-right:18px;">
+
+                                                    <table border="0" cellspacing="0" class="mcnTextContentContainer" width="100%" style="min-width: 100% !important;background-color: #404040;">
+                                                        <tbody><tr>
+                                                            <td valign="top" class="mcnTextContent" style="padding: 18px;color: #F2F2F2;font-family: Helvetica;font-size: 14px;font-weight: normal;text-align: center;">
+                                                                <div style="text-align: left;">/*<br>
+                                                                    &nbsp;* To change this license header, choose License Headers in Project Properties.<br>
+                                                                    &nbsp;* To change this template file, choose Tools | Templates<br>
+                                                                    &nbsp;* and open the template in the editor.<br>
+                                                                    &nbsp;*/<br>
+                                                                    package javaapplication9;<br>
+                                                                    <br>
+                                                                    import java.io.BufferedReader;<br>
+                                                                    import java.io.DataOutputStream;<br>
+                                                                    import java.io.InputStreamReader;<br>
+                                                                    import java.net.HttpURLConnection;<br>
+                                                                    import java.net.URL;<br>
+                                                                    import javax.net.ssl.HttpsURLConnection;<br>
+                                                                    <br>
+                                                                    /**<br>
+                                                                    &nbsp;*<br>
+                                                                    &nbsp;* @author NADIE<br>
+                                                                    &nbsp;*/<br>
+                                                                    public class JavaApplication9 {<br>
+                                                                    <br>
+                                                                    &nbsp; &nbsp; private final String USER_AGENT = "application/x-www-form-urlencoded";<br>
+                                                                    <br>
+                                                                    &nbsp; &nbsp; /**<br>
+                                                                    &nbsp; &nbsp; &nbsp;* @param args the command line arguments<br>
+                                                                    &nbsp; &nbsp; &nbsp;*/<br>
+                                                                    &nbsp; &nbsp; public static void main(String[] args) throws Exception {<br>
+                                                                    //Testings SENDGET<br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; JavaApplication9 http = new JavaApplication9();<br>
+                                                                    <br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; System.out.println("Testing 1 - Send Http GET request");<br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; http.sendGet();<br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; System.out.println(" &nbsp; &nbsp;");<br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; System.out.println("Testing 2 - Send Http GET request");<br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; http.sendGet2();<br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; System.out.println(" &nbsp; &nbsp;");<br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; System.out.println("Testing 3 - Send Http GET request");<br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; http.sendGet3();<br>
+                                                                    &nbsp; &nbsp; }<br>
+                                                                    <br>
+                                                                    &nbsp; &nbsp; // HTTP GET request<br>
+                                                                    &nbsp; &nbsp; private void sendGet() throws Exception {<br>
+                                                                    <br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; String url = "https://aplicaciones.espe.edu.ec:8443/authentication/api/query/id=l00366359&amp;auth=ba82e1071cd1ea9669a62f24213ba4a4.cf3df0e97b7a4cc68aeaab8d6bbb9691";<br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; URL obj = new URL(url);<br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; HttpURLConnection con = (HttpURLConnection) obj.openConnection();<br>
+                                                                    <br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; // optional default is GET<br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; con.setRequestMethod("GET");<br>
+                                                                    <br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; //add request header<br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; con.setRequestProperty("User-Agent", USER_AGENT);<br>
+                                                                    <br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; int responseCode = con.getResponseCode();<br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; System.out.println("\nSending 'GET' request to URL : " + url);<br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; System.out.println("Response Code : " + responseCode);<br>
+                                                                    <br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; BufferedReader in = new BufferedReader(<br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; new InputStreamReader(con.getInputStream()));<br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; String inputLine;<br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; StringBuffer response = new StringBuffer();<br>
+                                                                    <br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; while ((inputLine = in.readLine()) != null) {<br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; response.append(inputLine);<br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; }<br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; in.close();<br>
+                                                                    <br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; //print result<br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; System.out.println(response.toString());<br>
+                                                                    <br>
+                                                                    &nbsp; &nbsp; }<br>
+                                                                    <br>
+                                                                    &nbsp; &nbsp; private void sendGet2() throws Exception {<br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; String url = "https://aplicaciones.espe.edu.ec:8443/authentication/api/query/id=l00000296&amp;auth=ba82e1071cd1ea9669a62f24213ba4a4.cf3df0e97b7a4cc68aeaab8d6bbb9691";<br>
+                                                                    <br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; URL obj = new URL(url);<br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; HttpURLConnection con = (HttpURLConnection) obj.openConnection();<br>
+                                                                    <br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; // optional default is GET<br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; con.setRequestMethod("GET");<br>
+                                                                    <br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; //add request header<br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; con.setRequestProperty("User-Agent", USER_AGENT);<br>
+                                                                    <br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; int responseCode = con.getResponseCode();<br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; System.out.println("\nSending 'GET' request to URL : " + url);<br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; System.out.println("Response Code : " + responseCode);<br>
+                                                                    <br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; BufferedReader in = new BufferedReader(<br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; new InputStreamReader(con.getInputStream()));<br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; String inputLine;<br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; StringBuffer response = new StringBuffer();<br>
+                                                                    <br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; while ((inputLine = in.readLine()) != null) {<br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; response.append(inputLine);<br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; }<br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; in.close();<br>
+                                                                    <br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; //print result<br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; System.out.println(response.toString());<br>
+                                                                    <br>
+                                                                    &nbsp; &nbsp; }<br>
+                                                                    <br>
+                                                                    &nbsp; &nbsp; private void sendGet3() throws Exception {<br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; String url = "https://aplicaciones.espe.edu.ec:8443/authentication/api/query/id=l00356777&amp;auth=ba82e1071cd1ea9669a62f24213ba4a4.cf3df0e97b7a4cc68aeaab8d6bbb9691";<br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; URL obj = new URL(url);<br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; HttpURLConnection con = (HttpURLConnection) obj.openConnection();<br>
+                                                                    <br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; // optional default is GET<br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; con.setRequestMethod("GET");<br>
+                                                                    <br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; //add request header<br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; con.setRequestProperty("User-Agent", USER_AGENT);<br>
+                                                                    <br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; int responseCode = con.getResponseCode();<br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; System.out.println("\nSending 'GET' request to URL : " + url);<br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; System.out.println("Response Code : " + responseCode);<br>
+                                                                    <br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; BufferedReader in = new BufferedReader(<br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; new InputStreamReader(con.getInputStream()));<br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; String inputLine;<br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; StringBuffer response = new StringBuffer();<br>
+                                                                    <br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; while ((inputLine = in.readLine()) != null) {<br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; response.append(inputLine);<br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; }<br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; in.close();<br>
+                                                                    <br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; //print result<br>
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp; System.out.println(response.toString());<br>
+                                                                    <br>
+                                                                    &nbsp; &nbsp; }<br>
+                                                                    }</div>
+
+                                                            </td>
+                                                        </tr>
+                                                        </tbody></table>
+                                                </td>
+                                            </tr>
+                                            </tbody></table>
+                                        <!--[if gte mso 9]>
+                                        </td>
+                                        <![endif]-->
+
+                                        <!--[if gte mso 9]>
+                                        </tr>
+                                        </table>
+                                        <![endif]-->
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table></td>
+                        </tr>
+                    </table>
+                    <!--[if (gte mso 9)|(IE)]>
+                    </td>
+                    </tr>
+                    </table>
+                    <![endif]-->
+                </td>
+            </tr>
+            <h5>Designed by José Obando</h5>
+        </div><!-- /.col-xs-12 main -->
+    </div><!--/.row-->
+</div><!--/.container-->
+        </div><!--/.page-container-->
+
+</body>
+</html>
