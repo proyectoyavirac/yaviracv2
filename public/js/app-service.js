@@ -39,6 +39,11 @@ myApp.config(function ($routeProvider) {
             templateUrl: 'views/ruby.html',
             access: { restricted: false }
         })
+        .when('/C Sharp', {
+            templateUrl: 'views/informacion.html',
+            access: { restricted: false }
+        })
+        
 
     $routeProvider.otherwise('/home');
 });
@@ -173,8 +178,12 @@ myApp.controller('ctrlHome', function ($scope) {
 });
 
 myApp.controller('ctrlDocumentation', function ($scope) {
-    $scope.firstName = "John";
-    $scope.lastName = "Doe";
+    $scope.imgsCard = [{ img: "java.png", label: "java" },
+    { img: "c-sharp.png", label: "c-sharp" },
+    { img: "python.png", label: "python" },
+    { img: "ruby.png", label: "ruby" },
+    { img: "javascript.png", label: "javascript" }
+    ];
 });
 
 myApp.controller('ctrlContact', function ($scope) {
