@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>RUBY</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+
+  <body>
+
+    <nav class="navbar navbar-light bg-light">
+          <div class="jumbotron text-center">
+          <img src="/img/rubbb.jpg" width="800" height="600" align="left">
+            <h1>CONEXIÓN RUBY</h1><br>
+            <h1 align="left">Qué es y cómo crear una API en Ruby on Rails:</h1><br>
+            <h2 align="left">1.) Una API es una interfaz de programación de aplicaciones (del inglés API: Application Programming Interface). 
+                Es un conjunto de rutinas que provee acceso a funciones de un determinado software.<br><br>
+                2.) Una API nos servirá para que diferentes aplicaciones(web y móviles) puedan comunicarse con nuestra propia aplicación. 
+                Que usan estas aplicaciones externas para consumir nuestros servicios? una URL raíz o base que combinada con una serie de ‘end-points’, 
+                parámetros o querys, devuelven un conjunto de datos planos-[digo planos porque estos estarán en formatos como xml o json, 
+                dejando de lado HTML]<br><br>
+                3.) Ruby on Rails nos permite crear cosas fabulosas de forma muy rápida, realizando el mínimo esfuerzo posible.</h2><br><br><br>
+            <form action="/my-handling-form-page" method="post" align="left" >
+                  <label for="msg"><h1>CÓDIGO:</label></h1><br>
+                  <h2><textarea id="msg" cols="100" rows="15" >
+                    class Menu
+                      attr_reader :exit
+                      
+                      def initialize
+                          @exit = false
+                      end
+                  
+                      def mostrar_menu
+                          puts " " 
+                          puts "1.) Buscar con el número de cédula"
+                          puts "2.) Buscar con el Id"
+                          puts "3.) Buscar con el código"
+                          puts "4.) Salir"
+                      end
+                  
+                      def opciones
+                          opt = gets.chomp.to_i.abs
+                  
+                          case opt
+                  
+                          when 1 then
+                              ingresar_cedula
+                          when 2 then
+                              ingresar_id
+                          when 3 then
+                              ingresar_codigo    
+                          when 4 then
+                              @exit = true
+                          end
+                      end
+                  
+                      private
+                  
+                      def ingresar_cedula
+                          puts "Ingrese el número de cédula: "
+                          npas = gets.chomp
+                          puts ' '
+                          puts '             CORRESPONDE A:
+                           '   
+                           require 'net/http'
+                           require 'json'    
+                                    
+                           url ='https://aplicaciones.espe.edu.ec:8443/authentication/api/query/ced='+npas+'&auth=ba82e1071cd1ea9669a62f24213ba4a4.cf3df0e97b7a4cc68aeaab8d6bbb9691' 
+                           uri = URI(url)
+                           response = Net::HTTP.get(uri)
+                           im = JSON.parse(response)
+                           stnum = im.length
+                  
+                          if stnum >=10
+                          puts '    Nombres:              ' + im['nombres']
+                          puts '    Apellidos:            ' + im['apellidos']
+                          puts '    Código:               ' + im['codigo']
+                          puts '    Id:                   ' + im['id']
+                          puts '    Fecha de nacimiento:  ' + im['fechaNacimiento']
+                          puts '    E-mails:              ' + im['emails'].to_json
+                          puts '    Teléfonos:            ' + im['telefonos'].to_json
+                          puts '    Dirección:            ' + im['direccion'].to_json 
+                          puts ' '
+                  
+                          else
+                          puts 'No pertenece a la Universidad'   
+                          end 
+                      end
+                  
+                      def ingresar_id
+                          puts "Ingrese el Id: "
+                          npas = gets.chomp
+                          puts ' '
+                          puts '             CORRESPONDE A:
+                           '   
+                           require 'net/http'
+                           require 'json'    
+                                    
+                           url ='https://aplicaciones.espe.edu.ec:8443/authentication/api/query/id='+npas+'&auth=ba82e1071cd1ea9669a62f24213ba4a4.cf3df0e97b7a4cc68aeaab8d6bbb9691' 
+                           uri = URI(url)
+                           response = Net::HTTP.get(uri)
+                           im = JSON.parse(response)
+                           stnum = im.length
+                          
+                           if stnum >=10
+                          
+                          puts '    Nombres:              ' + im['nombres']
+                          puts '    Apellidos:            ' + im['apellidos']
+                          puts '    Cédula:               ' + im['cedula']
+                          puts '    Código:               ' + im['codigo']
+                          puts '    Fecha de nacimiento:  ' + im['fechaNacimiento']
+                          puts '    E-mails:              ' + im['emails'].to_json
+                          puts '    Teléfonos:            ' + im['telefonos'].to_json
+                          puts '    Dirección:            ' + im['direccion'].to_json 
+                          puts ' '
+                          else
+                          puts 'No pertenece a la Universidad'   
+                          end
+                  
+                      end
+                  
+                      def ingresar_codigo
+                          puts "Ingrese el código: "
+                          npas = gets.chomp
+                          puts ' '
+                          puts '             CORRESPONDE A:
+                           '   
+                           require 'net/http'
+                           require 'json'    
+                                    
+                           url ='https://aplicaciones.espe.edu.ec:8443/authentication/api/query/cod='+npas+'&auth=ba82e1071cd1ea9669a62f24213ba4a4.cf3df0e97b7a4cc68aeaab8d6bbb9691' 
+                           uri = URI(url)
+                           response = Net::HTTP.get(uri)
+                           im = JSON.parse(response)
+                  
+                           stnum = im.length
+                           
+                           if stnum >=10
+                            
+                          puts '    Nombres:              ' + im['nombres']
+                          puts '    Apellidos:            ' + im['apellidos']
+                          puts '    Cédula:               ' + im['cedula']
+                          puts '    Id:                   ' + im['id']
+                          puts '    Fecha de nacimiento:  ' + im['fechaNacimiento']
+                          puts '    E-mails:              ' + im['emails'].to_json
+                          puts '    Teléfonos:            ' + im['telefonos'].to_json
+                          puts '    Dirección:            ' + im['direccion'].to_json 
+                          puts ' '
+                          else
+                          puts 'No pertenece a la Universidad'   
+                          end
+                  
+                      end
+                  
+                  end
+                  
+                      menu=Menu.new
+                      
+                      until menu.exit
+                          menu.mostrar_menu
+                          menu.opciones
+                      end
+                  </textarea>
+                </h2>
+          </div>
+    </nav>
+  </body>
+
+</html>
