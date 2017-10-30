@@ -31,12 +31,12 @@ myApp.config(function ($routeProvider) {
             controller: 'logoutController',
             access: { restricted: true }
         })
-        .when('/one', {
-            template: '<h1>This is page one!</h1>',
+        .when('/python', {
+            templateUrl: 'views/python.html',
             access: { restricted: false }
         })
-        .when('/two', {
-            template: '<h1>This is page two!</h1>',
+        .when('/ruby', {
+            templateUrl: 'views/ruby.html',
             access: { restricted: false }
         })
 
