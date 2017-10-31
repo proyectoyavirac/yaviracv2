@@ -47,7 +47,7 @@ myApp.config(function ($routeProvider) {
             templateUrl: 'views/java2.html',
             access: { restricted: false }
         })
-        
+
 
     $routeProvider.otherwise('/home');
 });
@@ -182,7 +182,7 @@ myApp.controller('ctrlHome', function ($scope) {
 });
 
 myApp.controller('ctrlDocumentation', function ($scope) {
-   
+
 });
 
 myApp.controller('ctrlContact', function ($scope) {
@@ -249,10 +249,10 @@ myApp.controller('ctrlRegister',
                 $scope.disabled = true;
 
                 // call register from service
-                
+
                 authservice.register($scope.local.name, $scope.local.id, $scope.local.password)
-                    
-                // handle success
+
+                    // handle success
 
                     .then(function () {
                         $location.path('/login');
@@ -260,7 +260,7 @@ myApp.controller('ctrlRegister',
                         $scope.local = {};
                     })
 
-                    $location.path('/login');
+                $location.path('/login');
                 // h
 
             };
