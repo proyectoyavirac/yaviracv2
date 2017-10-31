@@ -43,6 +43,10 @@ myApp.config(function ($routeProvider) {
             templateUrl: 'views/informacion.html',
             access: { restricted: false }
         })
+        .when('/Java', {
+            templateUrl: 'views/java2.html',
+            access: { restricted: false }
+        })
         
 
     $routeProvider.otherwise('/home');
