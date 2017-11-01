@@ -7,13 +7,13 @@ var mongoose = require('mongoose');
 var hash = require('bcrypt-nodejs');
 var path = require('path');
 var passport = require('passport');
-var localStrategy = require('passport-local' ).Strategy;
+var localStrategy = require('passport-local').Strategy;
 var favicon = require('serve-favicon');
 
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost:27017/personas', { useMongoClient: true }).then(
-  () => { console.log('conexion exitosa') },
-  err => { console.log('no de ha conectado mongoDB') }
+    () => { console.log('conexion exitosa') },
+    err => { console.log('no de ha conectado mongoDB') }
 );
 
 //model schema
@@ -33,15 +33,15 @@ app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(express.static(path.join(__dirname,'./public')));
+app.use(express.static(path.join(__dirname, './public')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(require('express-session')({
-  secret: 'keyboard cat',
-  resave: false,
-  saveUninitialized: false
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: false
 }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -58,19 +58,19 @@ app.use('/user/', users);
 
 
 // catch 404 and forward to error handler
-app.use(function (req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+app.use(function(req, res, next) {
+    var err = new Error('Not Found');
+    err.status = 404;
+    next(err);
 });
 
 // error handler
 app.use(function(err, req, res) {
-  res.status(err.status || 500);
-  res.end(JSON.stringify({
-    message: err.message,
-    error: {}
-  }));
+    res.status(err.status || 500);
+    res.end(JSON.stringify({
+        message: err.message,
+        error: {}
+    }));
 });
 
 module.exports = app;

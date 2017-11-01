@@ -1,6 +1,6 @@
 var myApp = angular.module('myApp', ['ngRoute']);
 
-myApp.config(function ($routeProvider) {
+myApp.config(function($routeProvider) {
     $routeProvider
         .when('/home', {
             templateUrl: 'views/home.html',
@@ -53,14 +53,14 @@ myApp.config(function ($routeProvider) {
 });
 
 
-myApp.factory('AuthService', ['$q', '$timeout', '$http', function ($q, $timeout, $http) {
+myApp.factory('AuthService', ['$q', '$timeout', '$http', function($q, $timeout, $http) {
 
     authservice = {}
 
     // create user variable
     var user = null;
 
-    authservice.isLoggedIn = function () {
+    authservice.isLoggedIn = function() {
         if (user) {
             return true;
         } else {
@@ -68,30 +68,27 @@ myApp.factory('AuthService', ['$q', '$timeout', '$http', function ($q, $timeout,
         }
     }
 
-    authservice.getUserStatus = function () {
+    authservice.getUserStatus = function() {
         return user;
     }
 
-    authservice.login = function (name, id, password) {
+    authservice.login = function(name, password) {
         console.log('authservice.login');
 
         // create a new instance of deferred
         var deferred = $q.defer();
-        var local = {
-            name: name,
-            id: id,
-            password: password
-        }
-
 
         // send a post request to the server
-        $http.post('http://localhost:3333/api/user', local)
+        console.log('hi from login url');
+        $http.get('http://localhost:3333/api/user', { name: name, password: password })
             // handle success // test for success
             .then(function success(data, status) { // note to mherman: angular docs say .success method has been deprecated and to use .then https://docs.angularjs.org/api/ng/service/$http
                 console.log('data', data);
+                console.log('hi from login if 200');
                 if (status === 200 && data.status) {
                     user = true;
                     deferred.resolve();
+                    console.log('hi from login');
                 } else {
                     user = false;
                     deferred.reject();
@@ -108,7 +105,7 @@ myApp.factory('AuthService', ['$q', '$timeout', '$http', function ($q, $timeout,
 
     };
 
-    authservice.logout = function () {
+    authservice.logout = function() {
 
         // create a new instance of deferred
         var deferred = $q.defer();
@@ -131,7 +128,7 @@ myApp.factory('AuthService', ['$q', '$timeout', '$http', function ($q, $timeout,
 
     };
 
-    authservice.register = function (name, id, password) {
+    authservice.register = function(name, id, password) {
 
         // create a new instance of deferred
         var deferred = $q.defer();
@@ -144,7 +141,7 @@ myApp.factory('AuthService', ['$q', '$timeout', '$http', function ($q, $timeout,
         }
         console.log(local);
         // send a post request to the server
-        $http.post('http://localhost:3333/api/user', { local })    // handle success
+        $http.post('http://localhost:3333/api/user', { local }) // handle success
             .then(function success(data, status) {
                 console.log('hello!');
                 console.log('data', data);
@@ -167,49 +164,49 @@ myApp.factory('AuthService', ['$q', '$timeout', '$http', function ($q, $timeout,
     return authservice;
 }]);
 
-myApp.controller('ctrlHome', function ($scope) {
+myApp.controller('ctrlHome', function($scope) {
 
     $scope.imgsCarusel = [{ img: "blanconinja.png", css: "carousel-item active" },
-    { img: "cuadernoespe.svg", css: "carousel-item" },
-    { img: "background.jpg", css: "carousel-item" }
+        { img: "cuadernoespe.svg", css: "carousel-item" },
+        { img: "background.jpg", css: "carousel-item" }
     ];
     $scope.imgsCard = [{ img: "java.png", label: "java" },
-    { img: "c-sharp.png", label: "c-sharp" },
-    { img: "python.png", label: "python" },
-    { img: "ruby.png", label: "ruby" },
-    { img: "javascript.png", label: "javascript" }
+        { img: "c-sharp.png", label: "c-sharp" },
+        { img: "python.png", label: "python" },
+        { img: "ruby.png", label: "ruby" },
+        { img: "javascript.png", label: "javascript" }
     ];
 });
 
-myApp.controller('ctrlDocumentation', function ($scope) {
+myApp.controller('ctrlDocumentation', function($scope) {
 
 });
 
-myApp.controller('ctrlContact', function ($scope) {
+myApp.controller('ctrlContact', function($scope) {
     $scope.firstName = "John";
     $scope.lastName = "Doe";
 });
 
-myApp.controller('ctrlLogin', ['$scope', '$location', 'AuthService', function ($scope, $location, AuthService) {
+myApp.controller('ctrlLogin', ['$scope', '$location', 'AuthService', function($scope, $location, AuthService) {
 
     console.log(authservice.getUserStatus());
 
-    $scope.login = function () {
+    $scope.login = function() {
         console.log('hi from login');
         // initial values
         $scope.error = false;
         $scope.disabled = true;
 
         // call login from service
-        authservice.login($scope.loginForm.username, $scope.loginForm.password)
+        authservice.login($scope.loginForm.name, $scope.loginForm.password)
             // handle success
-            .then(function () {
+            .then(function() {
                 $location.path('/');
                 $scope.disabled = false;
                 $scope.loginForm = {};
             })
             // handle error
-            .catch(function () {
+            .catch(function() {
                 $scope.error = true;
                 $scope.errorMessage = "Invalid email and/or password";
                 $scope.disabled = false;
@@ -220,15 +217,15 @@ myApp.controller('ctrlLogin', ['$scope', '$location', 'AuthService', function ($
 
 }]);
 
-myApp.controller('logoutController', ['$scope', '$location', 'AuthService', function ($scope, $location, AuthService) {
+myApp.controller('logoutController', ['$scope', '$location', 'AuthService', function($scope, $location, AuthService) {
 
-    $scope.logout = function () {
+    $scope.logout = function() {
 
         console.log(authservice.getUserStatus());
 
         // call logout from service
         authservice.logout()
-            .then(function () {
+            .then(function() {
                 $location.path('/login');
             });
 
@@ -236,33 +233,33 @@ myApp.controller('logoutController', ['$scope', '$location', 'AuthService', func
 
 }]);
 
-myApp.controller('ctrlRegister',
-    ['$scope', '$location', 'AuthService',
-        function ($scope, $location, AuthService) {
+myApp.controller('ctrlRegister', ['$scope', '$location', 'AuthService',
+    function($scope, $location, AuthService) {
 
-            console.log(authservice.getUserStatus());
+        console.log(authservice.getUserStatus());
 
-            $scope.register = function () {
+        $scope.register = function() {
 
-                // initial values
-                $scope.error = false;
-                $scope.disabled = true;
+            // initial values
+            $scope.error = false;
+            $scope.disabled = true;
 
-                // call register from service
+            // call register from service
 
-                authservice.register($scope.local.name, $scope.local.id, $scope.local.password)
+            authservice.register($scope.local.name, $scope.local.id, $scope.local.password)
 
-                    // handle success
+            // handle success
 
-                    .then(function () {
-                        $location.path('/login');
-                        $scope.disabled = false;
-                        $scope.local = {};
-                    })
-
+            .then(function() {
                 $location.path('/login');
-                // h
+                $scope.disabled = false;
+                $scope.local = {};
+            })
 
-            };
+            $location.path('/login');
+            // h
 
-        }]);
+        };
+
+    }
+]);
