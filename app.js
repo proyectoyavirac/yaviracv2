@@ -10,15 +10,6 @@ var passport = require('passport');
 var localStrategy = require('passport-local').Strategy;
 var favicon = require('serve-favicon');
 
-mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost:27017/personas', { useMongoClient: true }).then(
-    () => { console.log('conexion exitosa') },
-    err => { console.log('no de ha conectado mongoDB') }
-);
-
-//model schema
-var User = require('./routes/models/user.js');
-
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -48,9 +39,9 @@ app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // configuracion passport
-passport.use(new localStrategy(User.authenticate()));
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+//passport.use(new localStrategy(User.authenticate()));
+//passport.serializeUser(User.serializeUser());
+//passport.deserializeUser(User.deserializeUser());
 
 //routes
 app.use('/', index);
