@@ -167,7 +167,7 @@ myApp.controller('ctrlLogin', ['$scope', '$http', function ($scope, $http) {
             password: $scope.data.password,
 
         };
-        
+
         $http({
             method: "GET",
 
@@ -181,7 +181,8 @@ myApp.controller('ctrlLogin', ['$scope', '$http', function ($scope, $http) {
 
             $scope.error = true;
             $scope.errorMessage = "Usuario o Contraseña son Incorrectos";
-            console.log('No se han enocntrado los pararametros');
+            console.log('No se han encontrado los pararametros');
+            console.log(response);
 
         });
 
